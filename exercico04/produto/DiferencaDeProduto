@@ -1,0 +1,23 @@
+// Função para calcular a diferença entre os produtos
+function calcularDiferenca(n1, n2, n3, n4) {
+  const produto1 = n1 * n2;
+  const produto2 = n3 * n4;
+  const diferenca = produto1 - produto2;
+  return diferenca;
+}
+
+// Exemplo de entrada
+const numero1 = 5.0;
+const numero2 = 6.0;
+const numero3 = 7.0;
+const numero4 = 8.0;
+
+// Cálculo
+const resultado = calcularDiferenca(numero1, numero2, numero3, numero4);
+
+// Saída
+console.log("numero1:", numero1.toFixed(1));
+console.log("numero2:", numero2.toFixed(1));
+console.log("numero3:", numero3.toFixed(1));
+console.log("numero4:", numero4.toFixed(1));
+console.log("Diferença:", resultado.toFixed(1));
