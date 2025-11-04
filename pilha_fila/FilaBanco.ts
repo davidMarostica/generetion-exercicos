@@ -1,67 +1,41 @@
-import { Queue } from "./Queue";
+export class Queue<Type> {
+  private QueueData: Array<Type> = [];
 
-// @ts-ignore
-const prompt = require("readline-sync").question;
+  constructor() {}
 
-const filaClientes = new Queue<string>();
+  isEmpty(): boolean {
+    return this.QueueData.length === 0;
+  }
 
-function mostrarFila(): void {
-  const lista = filaClientes.list();
-  console.log("\nFila:");
-  if (lista.length === 0) {
-    console.log("(vazia)");
-  } else {
-    lista.forEach((cliente) => console.log(cliente));
+  enqueue(dataItem: Type): void {
+    this.QueueData.push(dataItem);
+  }
+
+  dequeue(): Type | undefined {
+    return this.QueueData.shift();
+  }
+
+  count(): number {
+    return this.QueueData.length;
+  }
+
+  printQueue(): void {
+    console.log(this.QueueData.join(", "));
+  }
+
+  peek(): Type | undefined {
+    return this.QueueData[0];
+  }
+
+  contains(dataItem: Type): boolean {
+    return this.QueueData.includes(dataItem);
+  }
+
+  clear(): void {
+    this.QueueData.length = 0;
+  }
+
+  list(): Type[] {
+    return [...this.QueueData];
   }
 }
-
-function exibirMenu(): void {
-  console.log(`
-**************************************
-*                                    *
-*  1 - Adicionar Cliente na Fila     *
-*  2 - Listar todos os Clientes      *
-*  3 - Retirar Cliente da Fila       *
-*  0 - Sair                          *
-*                                    *
-**************************************
-`);
-}
-
-function menu(): void {
-  let opcao = "";
-
-  while (opcao !== "0") {
-    exibirMenu();
-    opcao = prompt("Entre com a opção desejada: ");
-
-    switch (opcao) {
-      case "1":
-        const nome = prompt("\nDigite o nome do cliente: ");
-        filaClientes.enqueue(nome);
-        mostrarFila();
-        console.log("\nCliente Adicionado!");
-        break;
-      case "2":
-        console.log("\nLista de Clientes na Fila:");
-        mostrarFila();
-        break;
-      case "3":
-        if (filaClientes.isEmpty()) {
-          console.log("\nA Fila está vazia!");
-        } else {
-          filaClientes.dequeue();
-          mostrarFila();
-          console.log("\nO Cliente foi Chamado!");
-        }
-        break;
-      case "0":
-        console.log("\nPrograma Finalizado!");
-        break;
-      default:
-        console.log("\nOpção inválida!");
-    }
-  }
-}
-
-menu();

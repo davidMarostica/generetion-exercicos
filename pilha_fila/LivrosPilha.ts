@@ -19,12 +19,12 @@ function exibirMenu(): void {
 }
 
 function mostrarPilha(): void {
-  const lista = pilhaLivros.list();
+  const lista = pilhaLivros.getItems(); // Corrigido: substitui list() por getItems()
   console.log("\nPilha:");
   if (lista.length === 0) {
     console.log("(vazia)");
   } else {
-    lista.forEach((livro) => console.log(livro));
+    lista.forEach((livro: string) => console.log(livro)); // Tipagem explícita
   }
 }
 
