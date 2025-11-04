@@ -19,12 +19,12 @@ function exibirMenu(): void {
 }
 
 function mostrarPilha(): void {
-  const lista = pilhaLivros.getItems(); // Corrigido: substitui list() por getItems()
+  const lista = pilhaLivros.list();
   console.log("\nPilha:");
   if (lista.length === 0) {
     console.log("(vazia)");
   } else {
-    lista.forEach((livro: string) => console.log(livro)); // Tipagem explícita
+    lista.forEach((livro: string) => console.log(livro));
   }
 }
 
@@ -37,7 +37,7 @@ function menu(): void {
 
     switch (opcao) {
       case "1":
-        const nome = prompt("\nDigite o nome: ");
+        const nome = prompt("\nDigite o nome do livro: ");
         pilhaLivros.push(nome);
         mostrarPilha();
         console.log("\nLivro adicionado!");

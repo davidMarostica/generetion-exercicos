@@ -12,18 +12,10 @@ export class Stack<Type> {
   }
 
   pop(): Type | undefined {
-    if (this.isEmpty()) {
-      console.log("A pilha está vazia");
-      return;
-    }
     return this.stackData.pop();
   }
 
   peek(): Type | undefined {
-    if (this.isEmpty()) {
-      console.log("A pilha está vazia");
-      return;
-    }
     return this.stackData[this.stackData.length - 1];
   }
 
@@ -39,8 +31,7 @@ export class Stack<Type> {
     return this.stackData.includes(item);
   }
 
-  // ✅ Método necessário para o LivrosPilha.ts funcionar
-  getItems(): Type[] {
+  list(): Type[] {
     return [...this.stackData];
   }
 }
